@@ -6,3 +6,18 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+dunce = "1.0.4"
+wild = "2.1.0"
+libc = "0.2.144"
+
+[target.'cfg(unix)'.dependencies]
+# walkdir = { workspace=true, optional=true }
+# nix = { workspace=true, features = ["fs", "uio", "zerocopy", "signal"] }
+# walkdir = { workspace=true, optional=true }
+nix = { version="0.26.2", features = ["fs", "uio", "zerocopy", "signal"] }
+
+[target.'cfg(windows)'.dependencies]
+# winapi-util = { version= "0.1.5", optional=true }
+# windows-sys = { version = "0.45.0", optional = true, default-features = false, features = ["Win32_Storage_FileSystem", "Win32_Foundation", "Win32_System_WindowsProgramming"] }
+winapi-util = { version = "0.1.5" }
+windows-sys = { version = "0.45.0", default-features = false, features = ["Win32_Storage_FileSystem", "Win32_Foundation", "Win32_System_WindowsProgramming"] }
